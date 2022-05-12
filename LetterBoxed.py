@@ -1,5 +1,5 @@
 def check_first_letter(start_letter, word) :
-    if(start_letter == " " or start_letter == word[0]) :
+    if(start_letter == "" or start_letter == word[0]) :
         return True
     return False
 
@@ -14,6 +14,7 @@ def check_repetitive_letters(word) :
             return False
     return True
 
+# Check if the adjecent letter is from the same row or column
 def check_consecutive_letters(word) :
     for i in range(len(word) - 1) :
         if(letter_dict[word[i]] == letter_dict[word[i + 1]]) :
@@ -76,14 +77,12 @@ file.close()
 
 words = sorted(words, key = lambda word, ls = letter_set : (len(set(word).intersection(ls))), reverse = True)
 
-generate_word_sequence(" ")
+generate_word_sequence("")
 
 # Reverse sorted ordered according to the number of words and length of those words (Desc.)
-#
 valid_sequence = sorted(valid_sequence, key = lambda word : (word.count(' '), len(word)), reverse = True)
 
 # For a list of sequences
-#
 # print(*valid_sequence, sep = "\n")
 
 print(valid_sequence[-1])
