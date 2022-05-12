@@ -1,6 +1,6 @@
 # NYT Letter Boxed word sequence generator
 
-This program generates a word sequence for NYT - Letter Boxed game.
+This program generates word sequence(s) for NYT - Letter Boxed game.
 
 To run this program download both files into the same location and run the python file.
 
