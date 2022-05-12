@@ -1,31 +1,3 @@
-row_1 = "yor"
-row_2 = "kha"
-
-column_1 = "dei"
-column_2 = "btc"
-
-letters = row_1 + row_2 + column_1 + column_2
-letter_set = set(letters)
-dynamic_letter_set = set(letters)
-
-letter_dict = {}
-
-for letter in list(row_1) :
-    letter_dict[letter] = "r1"
-
-for letter in list(row_2) :
-    letter_dict[letter] = "r2"
-
-for letter in list(column_1) :
-    letter_dict[letter] = "c1"
-
-for letter in list(column_2) :
-    letter_dict[letter] = "c2"
-
-valid_words = []
-words = []
-sequence = []
-
 def check_first_letter(start_letter, word) :
     if(start_letter == " " or start_letter == word[0]) :
         return True
@@ -50,20 +22,50 @@ def check_consecutive_letters(word) :
 
 def generate_word_sequence(start_letter) :
     for word in words :
-        if(check_first_letter(start_letter, word)) :
-            if(word not in sequence) :
-                sequence.append(word)
-                s = ' '.join(sequence)
-                if(len(letter_set.difference(set(s))) == 0) :
-                    valid_words.append(s)
-                    sequence.remove(word)
-                    return
-                elif(len(sequence) >= 4) :
-                    sequence.remove(word)
-                    return
-                else :
-                    generate_word_sequence(word[-1])
-                    sequence.remove(word)
+        if((check_first_letter(start_letter, word)) and (word not in sequence_array)) :
+            sequence_array.append(word)
+            sequence = ' '.join(sequence_array)
+            if(len(letter_set.difference(set(sequence))) == 0) :
+                valid_sequence.append(sequence)
+                global sequence_length
+                sequence_length = len(sequence_array)
+                sequence_array.remove(word)
+                return
+            elif(len(sequence_array) >= sequence_length) :
+                sequence_array.remove(word)
+                return
+            else :
+                generate_word_sequence(word[-1])
+                sequence_array.remove(word)
+
+words = []
+
+row_1 = input("Row 1 : ")
+row_2 = input("Row 2 : ")
+column_1 = input("Column 1 : ")
+column_2 = input("Column 2 : ")
+
+letters = row_1 + row_2 + column_1 + column_2
+letter_set = set(letters)
+
+letter_dict = {}
+
+for letter in list(row_1) :
+    letter_dict[letter] = "r1"
+
+for letter in list(row_2) :
+    letter_dict[letter] = "r2"
+
+for letter in list(column_1) :
+    letter_dict[letter] = "c1"
+
+for letter in list(column_2) :
+    letter_dict[letter] = "c2"
+
+valid_sequence = []
+sequence_array = []
+
+sequence_length = 6
 
 file = open("US.txt", "r")
 for line in file :
@@ -76,6 +78,12 @@ words = sorted(words, key = lambda word, ls = letter_set : (len(set(word).inters
 
 generate_word_sequence(" ")
 
-valid_words = sorted(valid_words, key = lambda word : (word.count(' '), len(word)), reverse = True)
+# Reverse sorted ordered according to the number of words and length of those words (Desc.)
+#
+valid_sequence = sorted(valid_sequence, key = lambda word : (word.count(' '), len(word)), reverse = True)
 
-print(*valid_words, sep = "\n")
+# For a list of sequences
+#
+# print(*valid_sequence, sep = "\n")
+
+print(valid_sequence[-1])
