@@ -39,8 +39,6 @@ def generate_word_sequence(start_letter) :
                 generate_word_sequence(word[-1])
                 sequence_array.remove(word)
 
-words = []
-
 row_1 = input("Row 1 : ")
 row_2 = input("Row 2 : ")
 column_1 = input("Column 1 : ")
@@ -63,6 +61,7 @@ for letter in list(column_1) :
 for letter in list(column_2) :
     letter_dict[letter] = "c2"
 
+words = []
 valid_sequence = []
 sequence_array = []
 
@@ -75,11 +74,12 @@ for line in file :
         words.append(word)
 file.close()
 
+# Reverse order words list according the number of letters letters in both word and letter_set
 words = sorted(words, key = lambda word, ls = letter_set : (len(set(word).intersection(ls))), reverse = True)
 
 generate_word_sequence("")
 
-# Reverse sorted ordered according to the number of words and length of those words (Desc.)
+# Reverse order according to the number of words and length of those words (Desc.)
 valid_sequence = sorted(valid_sequence, key = lambda word : (word.count(' '), len(word)), reverse = True)
 
 # For a list of sequences
