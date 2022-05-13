@@ -9,4 +9,4 @@ To run this program download both files into the same location and run the pytho
 
 The generated sequence may not always be the winning words of the game, as there can be sequences with equal number of words that has equal number of letters.
 
-Commented snippet of code in line 87 will display a list of valid sequences.
+Commented snippet of code in line 86 will display a list of valid sequences.
