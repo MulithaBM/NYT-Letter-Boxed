@@ -4,7 +4,7 @@ This program generates word sequence(s) for NYT - Letter Boxed game.
 
 To run this program download both files into the same location and run the python file.
 
-1. The program takes four inputs (Letters in two rows and two columns). Inputs should be strings with no spaces.
+The program takes four inputs (Letters in two rows and two columns). Inputs should be strings with no spaces.
 
 The program outputs the sequence with least number of words, that has the least number of letters.
 
