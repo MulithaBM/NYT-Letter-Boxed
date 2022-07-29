@@ -6,7 +6,7 @@ To run this program download both files into the same location and run the pytho
 
 The program takes four inputs (Letters in two rows and two columns). Inputs should be strings with no spaces.
 
-The program outputs the sequence with least number of words, that has the least number of letters.
+The program outputs the sequence with least number of words, that has the least number of letters, that consist of all the input letters.
 
 The generated sequence may not always be the winning words of the game, as there can be sequences with equal number of words that has equal number of letters.
 
